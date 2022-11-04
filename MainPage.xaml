@@ -3,39 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MathGameMaui.MainPage">
 
-    <ScrollView>
+    <ContentView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
+            Padding="50">
             <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
+                Text="This is your math game."
                 FontSize="32"
-                HorizontalOptions="Center" />
-
+                HorizontalOptions="Center"/>
             <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                Text="What game would you like to play?"
+                FontSize="32"
+                HorizontalOptions="Center"/>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Text="Addition"/>
+                <Button Grid.Column="1"
+                        Text="Subtraction"/>
+                <Button Grid.Column="2"
+                        Text="Multiplication"/>
+                <Button Grid.Column="3"
+                        Text="Division"/>
+                <Button Grid.Row="1"
+                        Grid.ColumnSpan="4"
+                        BackgroundColor="ForestGreen"
+                        Text="View Previous Games"/>
+            </Grid>
         </VerticalStackLayout>
-    </ScrollView>
-
+    </ContentView>
 </ContentPage>
