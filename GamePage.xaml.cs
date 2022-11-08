@@ -1,3 +1,5 @@
+using MathGameMaui.Models;
+
 namespace MathGameMaui;
 
 public partial class GamePage : ContentPage
@@ -95,9 +97,24 @@ public partial class GamePage : ContentPage
 
 	private void GameOver()
 	{
+		GameOperation gameOperation = GameType switch
+		{
+			"Addition" => GameOperation.ADDITION,
+			"Subtraction" => GameOperation.SUBTRACTION,
+			"Multiplication" => GameOperation.MULTIPLICATION,
+			"Division" => GameOperation.DIVISION
+		};
+
 		QuestionArea.IsVisible = false;
 		BackToMenuBtn.IsVisible = true;
 		GameOverLabel.Text = $"Game over! You scored {score} out of 15 points";
+
+		App.GameRepository.Add(new Game
+		{
+			DatePlayed = DateTime.Now,
+			Type = gameOperation,
+			Score = score
+		});
 	}
 
 	private void OnBackToMenu(object sender, EventArgs e)
